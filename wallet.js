@@ -12,10 +12,10 @@
    bundler. It exposes a small `window.CCWallet` API so the rest of the app
    (app.js, a classic script) can use it without also becoming a module.
 
-   SETUP REQUIRED: WalletConnect sessions need a "Project ID" from
-   https://cloud.reown.com (free). This is a public client identifier —
-   comparable to a Google Maps browser key — safe to ship in client code,
-   NOT a secret. Set WC_PROJECT_ID below before connecting will work.
+   WalletConnect sessions need a "Project ID" from https://cloud.reown.com
+   (free) — this is a public client identifier, comparable to a Google Maps
+   browser key, safe to ship in client code, NOT a secret. WC_PROJECT_ID
+   below is already set to a real project ID.
 
    HONESTY NOTE: CDN-hosted ESM builds of @walletconnect/sign-client can be
    sensitive to Node polyfills (Buffer, process) depending on version and
@@ -35,7 +35,7 @@
 
 import SignClient from "https://esm.sh/@walletconnect/sign-client@2?bundle";
 
-const WC_PROJECT_ID = "YOUR_WALLETCONNECT_PROJECT_ID"; // get one free at https://cloud.reown.com
+const WC_PROJECT_ID = "c7c933a47b59d19f19d9d64b2726eb98";
 
 const REQUIRED_NAMESPACES = {
   bch: {
@@ -85,13 +85,9 @@ async function getClient() {
 
 /**
  * Opens a WalletConnect pairing (shows a QR modal) and resolves once a
- * wallet approves the session. Throws if WC_PROJECT_ID hasn't been set.
+ * wallet approves the session.
  */
 async function connectWallet() {
-  if (WC_PROJECT_ID === "YOUR_WALLETCONNECT_PROJECT_ID") {
-    throw new Error("Set WC_PROJECT_ID in wallet.js to a real project id from cloud.reown.com first.");
-  }
-
   const c = await getClient();
   const { uri, approval } = await c.connect({ requiredNamespaces: REQUIRED_NAMESPACES });
 
