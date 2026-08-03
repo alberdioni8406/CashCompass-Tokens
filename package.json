@@ -1,0 +1,10 @@
+{
+  "name": "cashcompass-tokens",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CashCompass Tokens — a Bitcoin Cash CashTokens explorer and ecosystem atlas. Static site + Vercel serverless API functions, no build step, no bundler.",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  }
+}
