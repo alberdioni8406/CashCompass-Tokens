@@ -63,12 +63,10 @@ Paytaca, and Zapit. `wallet.js` is loaded as an ES module so it can import
 bundler — it exposes `window.CCWallet` for the rest of the (non-module)
 app to use.
 
-**Setup required before "Connect wallet" will work:**
-
-1. Get a free Project ID at https://cloud.reown.com (this is a public
-   client identifier, like a Google Maps browser key — not a secret, safe
-   to commit).
-2. Open `wallet.js` and replace `WC_PROJECT_ID`'s placeholder value with it.
+`WC_PROJECT_ID` in `wallet.js` is already set to a real Project ID from
+https://cloud.reown.com (this is a public client identifier, like a Google
+Maps browser key — not a secret, safe to commit). If you ever need to
+rotate it, generate a new one from the same dashboard and swap the value.
 
 The connect flow requests `bch_getAddresses`, `bch_signTransaction`, and
 `bch_signMessage` permissions and shows a QR pairing code. Test it against
